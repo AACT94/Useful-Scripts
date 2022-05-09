@@ -1,0 +1,16 @@
+let bomElements = document.getElementsByClassName("part");
+let components = "";
+
+for (let i = 1; i < bomElements.length; i++){
+
+   if (bomElements.item(i).getElementsByTagName("span").item(0).style.color == ""){
+         components += bomElements.item(i).getElementsByTagName("span").item(0).innerHTML.match(/[A-Za-z]?\d+/) + ",";
+         components += bomElements.item(i).getElementsByTagName("span").item(14).innerHTML.match(/[A-Za-z]+ .+/) + ",";
+
+      }
+}
+components.replace("&nbsp","");
+components.replace("<b>","");
+components.replace("</b>","");
+
+return components;
