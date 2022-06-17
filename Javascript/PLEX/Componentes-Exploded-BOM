@@ -1,0 +1,17 @@
+//ESTE SCRIPT TE DEVUELVE UNA LISTA DE TODOS
+//LOS COMPONENTES DEL EXPLODED BOM
+//INCLUYENDO SUS OPERACIONES Y SU CANTIDAD
+
+let collection = document.getElementsByClassName("MetadataLabel")
+let collection2 = document.getElementsByClassName("Header PartOperation")
+let collection3 = document.getElementsByClassName("part")
+let text= ""
+for (let i = 1; i < (collection.length);i++) {
+    text += collection.item(i).innerHTML;
+    text += " - ";
+    text += collection2.item(i).getElementsByTagName("span").item(1).innerHTML;
+    text += " - ";
+    text += collection3.item(i).getElementsByTagName("span").item(0).innerHTML;
+    text += ",";                
+}
+console.log(text)
