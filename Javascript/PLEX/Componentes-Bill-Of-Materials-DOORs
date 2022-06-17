@@ -1,0 +1,77 @@
+//SCRIPT para obtener los 6 componentes de las puertas en una cadena de texto
+//Usado en la pantall del Bill Of Materials
+//
+
+let partNoCollection = document.getElementsByClassName("CellLink NoWrap");
+let descriptionCollection = document.getElementsByClassName("NoWrap");
+let descriptionIndexStart = 4;
+let armrestPN = "";
+let midBolsterPN = "";
+let pullCupPN = "";
+let outerPN = "";
+let upperPN = "";
+let lowerPN = "";
+let finalOutput = "";
+
+let armrestDescription = "ARMREST-KNEE";
+let midBolsterDescription = "MID BOLSTER ASSY";
+let pullCupDescription = "PULL CUP";
+let outerDescription = "MID BLSTR OTR";
+let upperDescription = "UPPER ASM";
+let lowerDescription = "LWR TR";
+
+for (let i = 0; i < partNoCollection.length; i++){
+   let textDescription = descriptionCollection.item(descriptionIndexStart + (i*2)).innerHTML;
+   if (textDescription.search(armrestDescription)>=0) {
+       armrestPN = partNoCollection.item(i).innerText;
+       armrestPN += " - ";
+       armrestPN += armrestDescription;
+    }
+   if (textDescription.search(midBolsterDescription)>=0) {
+       midBolsterPN = partNoCollection.item(i).innerText;
+       midBolsterPN += " - ";
+       midBolsterPN += midBolsterDescription;
+    }
+    
+    if (textDescription.search(pullCupDescription)>=0) {
+       pullCupPN = partNoCollection.item(i).innerText;
+       pullCupPN += " - ";
+       pullCupPN += pullCupDescription;
+    }
+    
+   if (textDescription.search(outerDescription)>=0) {
+       outerPN = partNoCollection.item(i).innerText;
+       outerPN += " - ";
+       outerPN += outerDescription;
+    }
+    
+    if (textDescription.search(upperDescription)>=0) {
+       upperPN = partNoCollection.item(i).innerText;
+       upperPN += " - ";
+       upperPN += upperDescription;
+    }
+ 
+    if (textDescription.search(lowerDescription)>=0) {
+       lowerPN = partNoCollection.item(i).innerText;
+       lowerPN += " - ";
+       lowerPN += lowerDescription;
+    }
+}
+
+finalOutput = "";
+finalOutput += armrestPN;
+finalOutput += ",";
+finalOutput += midBolsterPN;
+finalOutput += ",";
+finalOutput += pullCupPN;
+finalOutput += ",";
+finalOutput += outerPN;
+finalOutput += ",";
+finalOutput += upperPN;
+finalOutput += ",";
+finalOutput += lowerPN;
+
+console.log(finalOutput);
+navigator.clipboard.writeText(finalOutput);
+  /* Alert the copied text */
+alert("Copied the text: " + finalOutput);
