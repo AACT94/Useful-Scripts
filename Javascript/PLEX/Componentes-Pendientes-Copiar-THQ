@@ -1,3 +1,8 @@
+//Este Script te permite traer un listado
+//De todos los componentes que estan pendientes de copiar
+//De un PCN a Otro
+//PANTALLA A USARSE: PLEX TROY - Single Part Copy
+
 let bomElements = document.getElementsByClassName("part");
 let components = "";
 
