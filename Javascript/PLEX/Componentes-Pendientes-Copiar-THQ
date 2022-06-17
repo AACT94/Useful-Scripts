@@ -18,4 +18,4 @@ components.replace("&nbsp","");
 components.replace("<b>","");
 components.replace("</b>","");
 
-return components;
+console.log(components);
