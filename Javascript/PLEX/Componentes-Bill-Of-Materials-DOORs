@@ -15,8 +15,10 @@ let finalOutput = "";
 
 let armrestDescription = "ARMREST-KNEE";
 let midBolsterDescription = "MID BOLSTER ASSY";
+let midBolsterDescriptionAlternative = "MID BSTER ASSY"
 let pullCupDescription = "PULL CUP";
 let outerDescription = "MID BLSTR OTR";
+let outerDescriptionAlternative = "MID BOLSTER OUTER"
 let upperDescription = "UPPER ASM";
 let lowerDescription = "LWR TR";
 
@@ -32,6 +34,11 @@ for (let i = 0; i < partNoCollection.length; i++){
        midBolsterPN += " - ";
        midBolsterPN += midBolsterDescription;
     }
+   if (textDescription.search(midBolsterDescriptionAlternative)>=0) {
+       midBolsterPN = partNoCollection.item(i).innerText;
+       midBolsterPN += " - ";
+       midBolsterPN += midBolsterDescription;
+    }
     
     if (textDescription.search(pullCupDescription)>=0) {
        pullCupPN = partNoCollection.item(i).innerText;
@@ -40,6 +47,11 @@ for (let i = 0; i < partNoCollection.length; i++){
     }
     
    if (textDescription.search(outerDescription)>=0) {
+       outerPN = partNoCollection.item(i).innerText;
+       outerPN += " - ";
+       outerPN += outerDescription;
+    }
+   if (textDescription.search(outerDescriptionAlternative)>=0) {
        outerPN = partNoCollection.item(i).innerText;
        outerPN += " - ";
        outerPN += outerDescription;
