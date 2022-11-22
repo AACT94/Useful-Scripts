@@ -1,0 +1,53 @@
+window.addEventListener('keydown', function (event) {
+
+
+	//PASO 1: Dar click en el primer elemento de la tabla
+    if (event.ctrlKey && event.altKey && event.code === 'KeyZ') {
+        let table = document.getElementsByTagName("table");
+        let currentTable = table.item(2)
+        let rows = currentTable.getElementsByTagName("tr");
+        rows.item(1).getElementsByTagName("td").item(2).getElementsByTagName("a").item(0).click();
+    }
+    
+	//PASO 2: Dar click en el link para acceder al workflow
+    if (event.ctrlKey && event.altKey && event.code == 'KeyX') {
+    
+        let tableCollection = document.getElementsByTagName("table");
+        let table = tableCollection.item(1);
+        let links = table.getElementsByTagName("a");
+        let textLinks = [];
+
+        for (link of links) {
+        if (!link.innerHTML.includes("img")){
+                textLinks.push(link);
+            }
+        }
+        textLinks[2].click();
+    }
+	
+	//PASO 3: Cambiar el estatus del campo a Completed y poner el enfoque para poner el comentario
+    if (event.ctrlKey && event.altKey && event.code === 'KeyC') {
+        let select = document.getElementsByTagName("select").item(0);
+        let inputsCollection = document.getElementsByTagName("input");
+        
+        let tempValue1 = select.innerHTML.search("option value");
+        let startLimit = tempValue1 + 14;
+        let endLimit = startLimit + 5;
+        let completedValue = select.innerHTML.slice(startLimit,endLimit);
+        select.value = completedValue;
+        
+        inputsCollection.item(0).focus();
+    }
+    
+	//PASO 4: Dar click en el boton Update
+    if (event.ctrlKey && event.altKey && event.code  === 'KeyA') {
+        try {
+            let backButton = document.querySelector('[title = "Update"]');
+            backButton.click();
+            }
+        catch {
+            alert ("No Update Button Located");
+        }
+    }
+    
+});
