@@ -26,17 +26,25 @@ window.addEventListener('keydown', function (event) {
     }
 	
 	//PASO 3: Cambiar el estatus del campo a Completed y poner el enfoque para poner el comentario
-    if (event.ctrlKey && event.altKey && event.code === 'KeyC') {
-        let select = document.getElementsByTagName("select").item(0);
-        let inputsCollection = document.getElementsByTagName("input");
+	
+	
+        if (event.ctrlKey && event.altKey && event.code === 'KeyC') {
+            try {
+                let select = document.getElementsByTagName("select").item(0);
+                let inputsCollection = document.getElementsByTagName("input");
         
-        let tempValue1 = select.innerHTML.search("option value");
-        let startLimit = tempValue1 + 14;
-        let endLimit = startLimit + 5;
-        let completedValue = select.innerHTML.slice(startLimit,endLimit);
-        select.value = completedValue;
-        
-        inputsCollection.item(0).focus();
+                let tempValue1 = select.innerHTML.search("option value");
+                let startLimit = tempValue1 + 14;
+                let endLimit = startLimit + 5;
+                let completedValue = select.innerHTML.slice(startLimit,endLimit);
+                select.value = completedValue;
+            
+                inputsCollection.item(0).focus();
+                }
+            
+            catch {
+                alert ("No input to update");
+                }
     }
     
 	//PASO 4: Dar click en el boton Update
@@ -49,5 +57,19 @@ window.addEventListener('keydown', function (event) {
             alert ("No Update Button Located");
         }
     }
+    //PASO 5: En caso de que aparezca una pantalla que diga Yes, aceptar
     
+    if (event.ctrlKey && event.altKey && event.code  === 'KeyQ') {
+        try {
+            let iframes = document.getElementsByTagName("iframe");
+            let iframe = iframes.item(1);
+            let iWindow = iframe.contentWindow;
+            let iDocument = iframe.document;
+            let yesButton = iDocument.querySelector('[title = "Update"]');
+            yesButton.click();
+            }
+        catch {
+            alert ("No Yes Button located");
+        }
+    }
 });
