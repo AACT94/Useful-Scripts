@@ -64,8 +64,8 @@ window.addEventListener('keydown', function (event) {
             let iframes = document.getElementsByTagName("iframe");
             let iframe = iframes.item(1);
             let iWindow = iframe.contentWindow;
-            let iDocument = iframe.document;
-            let yesButton = iDocument.querySelector('[title = "Update"]');
+            let iDocument = iWindow.document;
+            let yesButton = iDocument.querySelector('[title = "Yes"]');
             yesButton.click();
             }
         catch {
