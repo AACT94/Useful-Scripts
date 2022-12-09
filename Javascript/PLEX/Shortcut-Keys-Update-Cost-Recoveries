@@ -38,6 +38,9 @@ window.addEventListener('keydown', function (event) {
                 let endLimit = startLimit + 5;
                 let completedValue = select.innerHTML.slice(startLimit,endLimit);
                 select.value = completedValue;
+                let inputElements = document.getElementsByTagName("input");
+                inputElements[0].value  = "See previous signoff";
+
             
                 inputsCollection.item(0).focus();
                 }
